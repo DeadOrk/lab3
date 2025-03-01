@@ -31,13 +31,13 @@ class MainActivity : AppCompatActivity() {
 
             var charCount = 0
             for (char in input) {
-
-                if (!char.isLetter()) {
-                    charCount++
+                if (!char.toString().matches(Regex("[a-zA-Z]")))
+                {
+                    if (char.isLetter()) {
+                        charCount++
+                    }
                 }
-
             }
-
             findViewById<TextView>(R.id.resultTextView).text =
                 "Найдено: $charCount букв"
         }
