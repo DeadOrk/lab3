@@ -1,6 +1,10 @@
 package com.example.lab3
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +19,27 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        findViewById<Button>(R.id.calculateButton).setOnClickListener()
+        {
+            val input = findViewById<EditText>(R.id.inputText).text.toString()
+
+            if (input.isEmpty()) {
+                Toast.makeText(this, "Введите текст!", Toast.LENGTH_SHORT).show()
+            }
+
+            var charCount = 0
+            for (char in input) {
+
+                if (!char.isLetter()) {
+                    charCount++
+                }
+
+            }
+
+            findViewById<TextView>(R.id.resultTextView).text =
+                "Найдено: $charCount букв"
         }
     }
 }
